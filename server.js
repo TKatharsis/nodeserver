@@ -13,13 +13,13 @@ admin.credential.cert(serviceAccount),
 databaseURL: process.env.FIREBASE_DATABASE_URL,
 });
 
-const db = admin.database();
+const database = admin.database();
 const app = express();
 app.use(bodyParser.json());
 
 app.post('/data', (req, res) => {
     const data = req.body;
-    db.ref('sensorData')
+    database.ref('sensorData')
     .push(data)
     .then(() => res.status(200).send('Data saved successfully'))
     .catch((error) =>
